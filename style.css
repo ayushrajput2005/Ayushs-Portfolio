@@ -117,11 +117,18 @@ main {
     margin-left: var(--about-horizontal);
     width: var(--about-width); /* Editable width */
     height: var(--about-height); /* Editable height */
-    padding: 20px; /* Adjust padding for a smaller box */
+    padding: 0; /* Remove padding for iframe */
     border: 1px solid #000;
     border-radius: 10px; /* Restore rounded edges */
     box-sizing: border-box; /* Include padding in width and height */
     background-color: rgba(255, 255, 255, 0.8); /* Optional background for clarity */
+}
+
+.about iframe {
+    width: 100%;
+    height: 100%;
+    border: none; /* Remove iframe border */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use the same cursor as cursor_link */
 }
 
 .profile-section {

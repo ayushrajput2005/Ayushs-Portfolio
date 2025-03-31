@@ -13,15 +13,15 @@
             <h1>Home Page</h1>
         </header>
         <nav>
-            <button>Skills</button>
-            <button>Achievements</button>
-            <button>Projects</button>
-            <button>Extras</button>
+            <button onclick="loadSection('about.html')">About</button>
+            <button onclick="loadSection('skills.html')">Skills</button>
+            <button onclick="loadSection('achievements.html')">Achievements</button>
+            <button onclick="loadSection('projects.html')">Projects</button>
+            <button onclick="loadSection('extras.html')">Extras</button>
         </nav>
         <main>
             <section class="about">
-                <h2>About</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                <iframe id="content-frame" src="skills.html" frameborder="0"></iframe>
             </section>
         </main>
         <aside class="profile-section">

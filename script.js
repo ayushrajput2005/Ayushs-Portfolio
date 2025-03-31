@@ -27,3 +27,9 @@ document.querySelectorAll('nav button, a').forEach((element) => {
         cursorCircle.style.opacity = '1';
     });
 });
+
+// Function to load content into the iframe
+function loadSection(page) {
+    const iframe = document.getElementById('content-frame');
+    iframe.src = page;
+}
