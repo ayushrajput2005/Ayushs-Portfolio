@@ -23,12 +23,32 @@
     src: url('assets/fonts/font.ttf') format('truetype');
 }
 
-body {
+body, html {
     margin: 0;
     font-family: 'CustomFont', Arial, sans-serif;
     cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use link cursor as the general cursor */
     overflow: hidden; /* Prevent scrolling */
     height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+.cursor-circle {
+    position: fixed;
+    width: 40px; /* Normal size */
+    height: 40px; /* Normal size */
+    background: url('assets/images/circle1.png') no-repeat center center; /* Use circle1.png */
+    background-size: contain; /* Ensure the image fits within the circle */
+    pointer-events: none; /* Prevent interaction with the circle */
+    z-index: 9999; /* Increased z-index to stay on top */
+    transform: translate(-50%, -50%) scale(1); /* Default scale */
+    transition: transform 0.2s ease, opacity 0.2s ease; /* Smooth hover effect */
+    image-rendering: pixelated; /* Pixelated style */
+    opacity: 0.9; /* Default opacity */
+}
+
+nav button:hover ~ .cursor-circle,
+a:hover ~ .cursor-circle {
+    transform: translate(-50%, -50%) scale(2); /* Expand circle on hover */
+    opacity: 0.5; /* Fade effect on hover */
 }
 
 .background-image {
@@ -122,13 +142,15 @@ main {
     border-radius: 10px; /* Restore rounded edges */
     box-sizing: border-box; /* Include padding in width and height */
     background-color: rgba(255, 255, 255, 0.8); /* Optional background for clarity */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor style matches the rest of the page */
 }
 
 .about iframe {
-    width: 100%;
-    height: 100%;
+    width: 100%; /* Match the width of the .about section */
+    height: 100%; /* Match the height of the .about section */
     border: none; /* Remove iframe border */
     cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use the same cursor as cursor_link */
+    pointer-events: none; /* Prevent iframe from blocking cursor events */
 }
 
 .profile-section {
