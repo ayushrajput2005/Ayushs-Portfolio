@@ -1,0 +1,156 @@
+:root {
+    /* Variables for nav alignment and size */
+    --nav-horizontal: 5%; /* Horizontal alignment of nav */
+    --nav-vertical: 20px; /* Vertical alignment of nav */
+    --nav-width: 705px; /* Width of nav */
+    --nav-height: auto; /* Height of nav */
+
+    /* Variables for about alignment and size */
+    --about-horizontal: 0%; /* Horizontal alignment of about */
+    --about-vertical: 20px; /* Vertical alignment of about */
+    --about-width: 60.5%; /* Width of about */
+    --about-height: 90%; /* Height of about */
+
+    /* Variables for profile section alignment and size */
+    --profile-horizontal: 5%; /* Horizontal alignment of profile section */
+    --profile-vertical: 178px; /* Vertical alignment of profile section */
+    --profile-width: 400px; /* Width of profile section */
+    --profile-height: 524px; /* Height of profile section */
+}
+
+@font-face {
+    font-family: 'CustomFont';
+    src: url('assets/fonts/font.ttf') format('truetype');
+}
+
+body {
+    margin: 0;
+    font-family: 'CustomFont', Arial, sans-serif;
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use link cursor as the general cursor */
+    overflow: hidden; /* Prevent scrolling */
+    height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+.background-image {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-image: url('assets/images/background.jpg'); /* Ensure this path is correct */
+    background-color: #000; /* Fallback color */
+    filter: blur(5px) brightness(0.7); /* Adds blur and darkens the image */
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    height: 100%; /* Ensure the container takes up the full height */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+
+nav {
+    margin-top: var(--nav-vertical);
+    margin-left: var(--nav-horizontal);
+    width: var(--nav-width);
+    height: var(--nav-height);
+    display: flex;
+    gap: 20px; /* Increase spacing between buttons */
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    padding: 10px; /* Adjust padding */
+    border-radius: 15px; /* Restore rounded edges */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+    filter: none; /* Remove darkening effect */
+    justify-content: flex-start; /* Align navigation bar and buttons to the left */
+    align-self: flex-start; /* Align the entire nav bar to the left */
+    position: relative; /* Allow precise positioning */
+}
+
+nav button {
+    width: 150px; /* Set a fixed width for all buttons */
+    height: 60px; /* Increase button height */
+    background: url('assets/images/button3.png') no-repeat center center; /* Use button image */
+    background-size: 160% 180%; /* Increase the size of the background image */
+    cursor: inherit; /* Inherit the general cursor */
+    border: none; /* Remove border */
+    border-radius: 5px;
+    font-family: 'CustomFont', Arial, sans-serif; /* Use custom font for button text */
+    color: #fff; /* Ensure text is visible */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Improve text visibility */
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Center text inside the button */
+    font-size: 1.3rem; /* Adjust font size */
+    white-space: nowrap; /* Prevent text from wrapping */
+    transition: transform 0.2s ease, font-size 0.2s ease; /* Smooth hover effect */
+    filter: none; /* Remove glow effect */
+}
+
+nav button:hover {
+    transform: scale(1.1); /* Slightly increase button size on hover */
+    font-size: 1.4rem; /* Slightly increase text size on hover */
+}
+
+main {
+    display: flex;
+    gap: 20px;
+    width: 100%;
+    max-width: 1200px;
+    height: calc(100% - 150px); /* Adjust height to fit within the viewport, accounting for header and nav */
+    box-sizing: border-box; /* Include padding in height calculation */
+    overflow: hidden; /* Prevent scrolling within the main section */
+}
+
+.about {
+    display: block; /* Ensure it behaves as a block-level element */
+    margin-top: var(--about-vertical);
+    margin-left: var(--about-horizontal);
+    width: var(--about-width); /* Editable width */
+    height: var(--about-height); /* Editable height */
+    padding: 20px; /* Adjust padding for a smaller box */
+    border: 1px solid #000;
+    border-radius: 10px; /* Restore rounded edges */
+    box-sizing: border-box; /* Include padding in width and height */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional background for clarity */
+}
+
+.profile-section {
+    position: absolute; /* Position relative to the display */
+    top: var(--profile-vertical);
+    right: var(--profile-horizontal); /* Align to the right */
+    width: var(--profile-width);
+    height: var(--profile-height);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box; /* Include padding in width and height */
+    border: 1px solid #000; /* Optional border for visual clarity */
+    border-radius: 10px; /* Rounded edges for the section */
+    background-color: rgba(255, 255, 255, 0.8); /* Optional background for clarity */
+}
+
+.profile-image {
+    width: 100px; /* Adjust the size of the profile image */
+    height: 100px; /* Match the width */
+    border-radius: 50%; /* Keep the image circular */
+    background-color: #ccc;
+    margin-bottom: 10px; /* Space between the image and text */
+}
+
+.profile-section p {
+    margin: 0;
+    font-size: 1rem;
+    color: #333;
+}
