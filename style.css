@@ -1,38 +1,28 @@
 :root {
-    /* Variables for nav alignment and size */
-    --nav-horizontal: 1px; /* Horizontal alignment of nav */
-    --nav-vertical: 20px; /* Vertical alignment of nav */
-    --nav-width: 740px; /* Width of nav */
-    --nav-height: auto; /* Height of nav */
-
-    /* Variables for about alignment and size */
-    --about-horizontal: 0%; /* Horizontal alignment of about */
-    --about-vertical: 20px; /* Vertical alignment of about */
-    --about-width: 60.5%; /* Width of about */
-    --about-height: 90%; /* Height of about */
-
-    /* Variables for profile section alignment and size */
-    --profile-horizontal: 5%; /* Horizontal alignment of profile section */
-    --profile-vertical: 119px; /* Vertical alignment of profile section */
-    --profile-width: 400px; /* Width of profile section */
-    --profile-height: 590px; /* Height of profile section */
-
-    /* Add new theme colors */
+    --nav-horizontal: 1px;
+    --nav-vertical: 20px;
+    --nav-width: 740px;
+    --nav-height: auto;
+    --about-horizontal: 0%;
+    --about-vertical: 20px;
+    --about-width: 60.5%;
+    --about-height: 90%;
+    --profile-horizontal: 5%;
+    --profile-vertical: 119px;
+    --profile-width: 400px;
+    --profile-height: 590px;
     --souls-gold: #c7a649;
     --souls-dark: rgba(0, 0, 0, 0.85);
     --souls-glow: 0 0 15px var(--souls-gold);
-
-    /* Blasphemous theme colors */
     --blasphemous-gold: #916f3a;
     --blasphemous-red: #4a0f0f;
     --blasphemous-dark: #1a1a1a;
     --blasphemous-light: #c7b088;
     --blasphemous-scroll: #2a2a2a;
     --blasphemous-glow: 0 0 15px var(--blasphemous-gold);
-
-    /* Profile image dimensions */
     --profile-image-width: 300px;
     --profile-image-height: 300px;
+    --animation-speed: 0.3s;
 }
 
 @font-face {
@@ -43,9 +33,9 @@
 body, html {
     margin: 0;
     font-family: 'BlasphemousFont', Arial, sans-serif;
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use link cursor as the general cursor */
-    overflow: hidden; /* Prevent scrolling */
-    height: 100vh; /* Ensure the body takes up the full viewport height */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
+    overflow: hidden;
+    height: 100vh;
 }
 
 .cursor-overlay {
@@ -55,21 +45,21 @@ body, html {
     width: 100vw;
     height: 100vh;
     pointer-events: none;
-    z-index: 99999; /* Ensure it's above all other elements */
+    z-index: 99999;
 }
 
 .cursor-circle {
     position: fixed;
-    width: 40px; /* Normal size */
-    height: 40px; /* Normal size */
-    background: url('assets/images/circle.png') no-repeat center center; /* Use circle.png */
-    background-size: contain; /* Ensure the image fits within the circle */
-    pointer-events: none; /* Prevent interaction with the circle */
-    z-index: inherit; /* Ensure it's above everything */
-    transform: translate(-50%, -50%) scale(1); /* Default scale */
-    transition: transform 0.2s ease, opacity 0.2s ease; /* Smooth hover effect */
-    image-rendering: pixelated; /* Pixelated style */
-    opacity: 0.9; /* Default opacity */
+    width: 40px;
+    height: 40px;
+    background: url('assets/images/circle.png') no-repeat center center;
+    background-size: contain;
+    pointer-events: none;
+    z-index: inherit;
+    transform: translate(-50%, -50%) scale(1);
+    transition: transform 0.2s ease, opacity 0.2s ease;
+    image-rendering: pixelated;
+    opacity: 0.9;
     mix-blend-mode: difference;
     will-change: transform;
     backface-visibility: hidden;
@@ -77,8 +67,8 @@ body, html {
 
 nav button:hover ~ .cursor-circle,
 a:hover ~ .cursor-circle {
-    transform: translate(-50%, -50%) scale(2); /* Expand circle on hover */
-    opacity: 0.5; /* Fade effect on hover */
+    transform: translate(-50%, -50%) scale(2);
+    opacity: 0.5;
 }
 
 .background-image {
@@ -91,13 +81,13 @@ a:hover ~ .cursor-circle {
     background-size: cover;
     background-position: center;
     background-image: url('assets/images/background1.jpg');
-    background-color: #000; /* Fallback color */
+    background-color: #000;
     filter: blur(5px) brightness(0.5);
-    display: block; /* Restore visibility */
+    display: block;
 }
 
 .background-video {
-    display: none; /* Hide video background */
+    display: none;
 }
 
 .container {
@@ -105,8 +95,8 @@ a:hover ~ .cursor-circle {
     flex-direction: column;
     align-items: center;
     padding: 20px;
-    height: 100%; /* Ensure the container takes up the full height */
-    box-sizing: border-box; /* Include padding in height calculation */
+    height: 100%;
+    box-sizing: border-box;
 }
 
 header h1 {
@@ -123,23 +113,24 @@ nav {
     width: var(--nav-width);
     height: var(--nav-height);
     display: flex;
-    gap: 20px; /* Increase spacing between buttons */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-    padding: 10px; /* Adjust padding */
-    border-radius: 15px; /* Restore rounded edges */
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
-    filter: none; /* Remove darkening effect */
-    justify-content: flex-start; /* Align navigation bar and buttons to the left */
-    align-self: flex-start; /* Align the entire nav bar to the left */
+    gap: 20px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    filter: none;
+    justify-content: flex-start;
+    align-self: flex-start;
+    animation: fadeIn var(--animation-speed) ease-out;
 }
 
 nav button {
-    width: 180px; /* Wider buttons for ornate design */
-    height: 65px; /* Taller buttons */
+    width: 180px;
+    height: 65px;
     background: var(--blasphemous-dark);
     cursor: inherit;
-    border: none; /* Remove default border */
-    position: relative; /* For pseudo-elements */
+    border: none;
+    position: relative;
     color: var(--blasphemous-light);
     text-shadow: 0 0 8px var(--blasphemous-gold);
     letter-spacing: 2px;
@@ -156,6 +147,7 @@ nav button {
         15px 100%,
         0 50%
     );
+    animation: fadeIn var(--animation-speed) ease-out;
 }
 
 nav button.selected {
@@ -206,7 +198,7 @@ nav button::after {
 }
 
 nav button:hover {
-    transform: scale(1.05); /* Slightly reduce scale effect */
+    transform: scale(1.05);
     font-size: 1.35rem;
     text-shadow: 0 0 15px var(--blasphemous-gold);
     background: linear-gradient(45deg, var(--blasphemous-dark), transparent);
@@ -222,9 +214,9 @@ main {
     gap: 20px;
     width: 100%;
     max-width: 1200px;
-    height: calc(100% - 150px); /* Adjust height to fit within the viewport, accounting for header and nav */
-    box-sizing: border-box; /* Include padding in height calculation */
-    overflow: hidden; /* Prevent scrolling within the main section */
+    height: calc(100% - 150px);
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 .about {
@@ -244,6 +236,7 @@ main {
     background: var(--blasphemous-dark);
     box-shadow: var(--blasphemous-glow);
     cursor: url('assets/images/cursor_link.png') 0 0, auto;
+    animation: fadeIn var(--animation-speed) ease-out;
 }
 
 .about iframe {
@@ -268,9 +261,9 @@ main {
     justify-content: flex-start;
     text-align: center;
     padding: 20px;
-    width: 350px; /* Decreased base width */
-    right: 5vw; /* Position from right */
-    top: 25vh; /* Align with about section */
+    width: 350px;
+    right: 5vw;
+    top: 25vh;
     box-sizing: border-box;
     border: 2px solid var(--blasphemous-gold);
     border-radius: 10px;
@@ -278,28 +271,27 @@ main {
     box-shadow: var(--blasphemous-glow);
     z-index: 100;
     transition: all 0.3s ease;
+    animation: fadeIn var(--animation-speed) ease-out;
 }
 
 .profile-title {
     font-family: 'BlasphemousFont', Arial, sans-serif;
     font-size: 1.5rem;
-    color: #ffd700; /* Brighter gold color */
-    text-shadow: 0 0 15px #ffd700; /* Glow effect */
+    color: #ffd700;
+    text-shadow: 0 0 15px #ffd700;
     margin-bottom: 20px;
-    transition: all 0.3s ease; /* Smooth transition for hover effect */
+    transition: all 0.3s ease;
 }
 
 .profile-title:hover {
-    color: #fff700; /* Even brighter color on hover */
-    text-shadow: 0 0 25px #ffd33382, 0 0 50px #f7d42390; /* Stronger glow on hover */
+    color: #fff700;
+    text-shadow: 0 0 25px #ffd33382, 0 0 50px #f7d42390;
 }
 
-/* Remove profile image styles */
 .profile-image {
     display: none;
 }
 
-/* Update responsive sizing for different screen sizes */
 @media screen and (max-width: 1600px) {
     .profile-section {
         width: 300px;
@@ -321,14 +313,13 @@ main {
     }
 }
 
-/* Remove the after pseudo-element completely */
 .profile-image::after {
     display: none;
 }
 
 .profile-section p {
-    margin: 15px 0; /* Reduced margin */
-    font-size: 0.9rem; /* Decreased font size */
+    margin: 15px 0;
+    font-size: 0.9rem;
     color: var(--blasphemous-light);
     text-shadow: 0 0 8px var(--blasphemous-gold);
 }
@@ -361,7 +352,7 @@ main {
     flex: 1;
     display: flex;
     align-items: center;
-    gap: 15px; /* Increased gap for better spacing */
+    gap: 15px;
 }
 
 .stat-bar {
@@ -376,9 +367,9 @@ main {
 .stat-value {
     color: var(--blasphemous-gold);
     text-shadow: 0 0 8px var(--blasphemous-gold);
-    font-size: 1.4rem; /* Increased size */
+    font-size: 1.4rem;
     text-align: right;
-    white-space: nowrap; /* Keep text in one line */
+    white-space: nowrap;
 }
 
 .stat-value.no-bar {
@@ -391,9 +382,9 @@ main {
     background: var(--blasphemous-gold);
     box-shadow: 0 0 10px var(--blasphemous-gold);
     transition: width 1s ease;
+    animation: fillBar 1s ease-out forwards;
 }
 
-/* Add new menu transition effects */
 .menu-transition {
     position: fixed;
     top: 0;
@@ -403,11 +394,10 @@ main {
     background: black;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 1s ease;
+    transition: opacity 0.5s ease;
     z-index: 9999;
 }
 
-/* Custom Scrollbar - Updated Design */
 ::-webkit-scrollbar {
     width: 12px;
     background: var(--blasphemous-dark);
@@ -447,43 +437,41 @@ main {
 }
 
 .extra-link {
-    display: block; /* Make the entire tile clickable */
-    text-decoration: none; /* Remove underline from hyperlink */
-    color: inherit; /* Inherit text color */
+    display: block;
+    text-decoration: none;
+    color: inherit;
 }
 
 .extra-link:hover .extra-item {
-    transform: scale(1.05); /* Slightly enlarge on hover */
-    box-shadow: 0 0 15px rgba(145, 111, 58, 0.5); /* Add subtle glow */
-    background: rgba(145, 111, 58, 0.2); /* Slightly brighter background */
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(145, 111, 58, 0.5);
+    background: rgba(145, 111, 58, 0.2);
 }
 
 .project-link, .extra-link {
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
 .project-link:hover, .extra-link:hover {
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png on hover */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
 .project-item, .extra-item, .project-link, .extra-link {
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
 .project-item:hover, .extra-item:hover, .project-link:hover, .extra-link:hover {
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png on hover */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
-/* Ensure cursor_link.png appears on all hyperlinks */
 a {
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Set custom cursor for all links */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
 a:hover {
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Maintain custom cursor on hover */
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
-/* Ensure cursor_link.png appears on all links */
 a, .project-link, .extra-link {
     cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
@@ -492,7 +480,6 @@ a:hover, .project-link:hover, .extra-link:hover {
     cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
-/* Set cursor_link.png as the default cursor for specific pages */
 body.contact-page, body.certificates-page, body.credits-page, body.portfolio-project-page {
     cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
@@ -501,7 +488,7 @@ body.contact-page, body.certificates-page, body.credits-page, body.portfolio-pro
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 20px; /* Space between icons */
+    gap: 20px;
     margin-top: 20px;
 }
 
@@ -510,23 +497,24 @@ body.contact-page, body.certificates-page, body.credits-page, body.portfolio-pro
     width: 50px;
     height: 50px;
     transition: transform 0.3s ease;
+    animation: fadeIn var(--animation-speed) ease-out;
 }
 
 social-links a:hover {
-    transform: scale(1.2); /* Slightly enlarge on hover */
+    transform: scale(1.2);
 }
 
 .social-links img {
     width: 100%;
     height: 100%;
-    object-fit: contain; /* Ensure the image fits within the container */
-    border-radius: 50%; /* Make the icons circular */
-    box-shadow: 0 0 10px var(--blasphemous-gold); /* Add a subtle glow */
+    object-fit: contain;
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--blasphemous-gold);
     transition: box-shadow 0.3s ease;
 }
 
 social-links img:hover {
-    box-shadow: 0 0 15px var(--blasphemous-gold); /* Stronger glow on hover */
+    box-shadow: 0 0 15px var(--blasphemous-gold);
 }
 
 .mute-button {
@@ -545,10 +533,69 @@ social-links img:hover {
     width: 100%;
     height: 100%;
     object-fit: contain;
-    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for transform and opacity */
+    transition: transform 0.3s ease, opacity 0.3s ease;
 }
 
 .mute-button img:hover {
-    transform: scale(1.1); /* Slightly enlarge on hover */
-    opacity: 0.8; /* Slightly fade on hover */
+    transform: scale(1.1);
+    opacity: 0.8;
+}
+
+body::before {
+    display: none;
+}
+
+.crt {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(
+        to bottom,
+        rgba(18, 16, 16, 0) 0%,
+        rgba(18, 16, 16, 0.5) 50%,
+        rgba(18, 16, 16, 0) 100%
+    );
+    background-size: 100% 4px;
+    animation: scanlines 0.2s linear infinite, flicker 0.15s infinite;
+    will-change: transform, opacity;
+    opacity: 0.3;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+}
+
+@keyframes scanlines {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(4px);
+    }
+}
+
+@keyframes flicker {
+    0% { opacity: 0.3; }
+    25% { opacity: 0.4; }
+    50% { opacity: 0.2; }
+    75% { opacity: 0.35; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fillBar {
+    from { width: 0; }
+    to { width: 100%; }
 }
