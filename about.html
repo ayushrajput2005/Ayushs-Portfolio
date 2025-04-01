@@ -5,10 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About</title>
     <style>
+        :root {
+            --blasphemous-gold: #916f3a;
+            --blasphemous-red: #4a0f0f;
+            --blasphemous-dark: #1a1a1a;
+            --blasphemous-light: #c7b088;
+        }
+
+        @font-face {
+            font-family: 'BlasphemousFont';
+            src: url('assets/fonts/font.ttf') format('truetype');
+        }
+
         body {
             background: var(--blasphemous-dark);
             color: var(--blasphemous-light);
-            font-family: 'CustomFont', Arial, sans-serif;
+            font-family: 'BlasphemousFont', Arial, sans-serif;
             padding: 20px;
             cursor: url('assets/images/cursor_link.png') 0 0, auto;
             overflow-y: auto;

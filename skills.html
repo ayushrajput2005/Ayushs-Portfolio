@@ -10,6 +10,13 @@
             src: url('assets/fonts/font.ttf') format('truetype');
         }
 
+        :root {
+            --blasphemous-gold: #916f3a;
+            --blasphemous-red: #4a0f0f;
+            --blasphemous-dark: #1a1a1a;
+            --blasphemous-light: #c7b088;
+        }
+
         body {
             background: var(--blasphemous-dark);
             color: var(--blasphemous-light);
@@ -101,6 +108,16 @@
             width: 0%;
             transition: width 1s ease;
             box-shadow: 0 0 10px var(--blasphemous-gold);
+        }
+
+        h2 {
+            color: var(--blasphemous-gold);
+            text-shadow: 0 0 10px var(--blasphemous-gold);
+        }
+
+        li {
+            text-shadow: 0 0 5px var(--blasphemous-light);
+            color: var(--blasphemous-light);
         }
     </style>
 </head>

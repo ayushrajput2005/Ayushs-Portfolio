@@ -88,6 +88,57 @@ const SOUNDS = {
     select: new Audio('assets/sfx/select.mp3')
 };
 
+// Define common styles to be used for both initial load and navigation
+const commonStyles = `
+    body {
+        cursor: url('assets/images/cursor_link.png') 0 0, auto !important;
+        color: var(--blasphemous-light);
+        background: var(--blasphemous-dark);
+        font-family: 'BlasphemousFont', Arial, sans-serif;
+        text-shadow: 0 0 10px var(--blasphemous-gold);
+        padding: 20px;
+        overflow-y: auto;
+    }
+    h2 {
+        color: var(--blasphemous-gold);
+        text-shadow: 0 0 10px var(--blasphemous-gold);
+        border-bottom: 2px solid var(--blasphemous-gold);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-variant: small-caps;
+        letter-spacing: 2px;
+    }
+    .about-content {
+        border: 1px solid var(--blasphemous-gold);
+        padding: 20px;
+        background: rgba(0, 0, 0, 0.3);
+        box-shadow: 0 0 15px rgba(145, 111, 58, 0.2);
+    }
+    p {
+        line-height: 1.6;
+        text-shadow: 0 0 5px var(--blasphemous-light);
+        margin: 10px 0;
+    }
+    .highlight {
+        color: var(--blasphemous-gold);
+        text-shadow: 0 0 8px var(--blasphemous-gold);
+    }
+    ::-webkit-scrollbar { display: none; }
+    html { scrollbar-width: none; }
+`;
+
+// Function to apply styles to iframe
+function applyStylesToIframe(iframe) {
+    try {
+        const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+        const style = document.createElement('style');
+        style.textContent = commonStyles;
+        iframeDoc.head.appendChild(style);
+    } catch (e) {
+        console.log('Could not apply styles to iframe content');
+    }
+}
+
 // Enhanced menu transition
 function loadSection(page) {
     // Remove selected class from all buttons
@@ -110,39 +161,7 @@ function loadSection(page) {
     setTimeout(() => {
         iframe.src = page;
         iframe.onload = () => {
-            // Apply Dark Souls styling to iframe content
-            try {
-                const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
-                const style = document.createElement('style');
-                style.textContent = `
-                    body {
-                        cursor: url('assets/images/cursor_link.png') 0 0, auto !important;
-                        color: #c7a649;
-                        font-family: 'CustomFont', Arial, sans-serif;
-                        text-shadow: 0 0 10px #c7a649;
-                        padding: 20px;
-                    }
-                    h2 {
-                        border-bottom: 1px solid #c7a649;
-                        padding-bottom: 10px;
-                    }
-                    ul {
-                        list-style: none;
-                        padding: 0;
-                    }
-                    li {
-                        margin: 15px 0;
-                        transition: text-shadow 0.3s ease;
-                    }
-                    li:hover {
-                        text-shadow: 0 0 15px #c7a649;
-                    }
-                `;
-                iframeDoc.head.appendChild(style);
-            } catch (e) {
-                console.log('Could not apply styles to iframe content');
-            }
-            
+            applyStylesToIframe(iframe);
             // Hide transition
             setTimeout(() => {
                 transition.style.opacity = '0';
@@ -150,6 +169,20 @@ function loadSection(page) {
         };
     }, 500);
 }
+
+// Handle initial page load
+window.addEventListener('load', () => {
+    const iframe = document.getElementById('content-frame');
+    const aboutButton = document.querySelector('nav button[onclick="loadSection(\'about.html\')"]');
+    
+    // Set initial selected button
+    if (aboutButton) {
+        aboutButton.classList.add('selected');
+    }
+
+    // Apply styles when iframe loads
+    iframe.onload = () => applyStylesToIframe(iframe);
+});
 
 // Set initial selected state on load
 window.addEventListener('load', () => {
@@ -183,4 +216,28 @@ document.querySelectorAll('nav button').forEach(button => {
     button.addEventListener('mouseenter', () => {
         SOUNDS.hover.play();
     });
+});
+
+// Add initial load styling
+window.addEventListener('load', () => {
+    const iframe = document.getElementById('content-frame');
+    const currentPage = iframe.src.split('/').pop();
+    
+    // Set initial selected button
+    const currentButton = document.querySelector(`nav button[onclick="loadSection('${currentPage}')"]`);
+    if (currentButton) {
+        currentButton.classList.add('selected');
+    }
+
+    // Apply styles to initial load
+    iframe.onload = () => {
+        try {
+            const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+            const style = document.createElement('style');
+            style.textContent = commonStyles;
+            iframeDoc.head.appendChild(style);
+        } catch (e) {
+            console.log('Could not apply styles to iframe content');
+        }
+    };
 });

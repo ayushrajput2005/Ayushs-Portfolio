@@ -10,6 +10,13 @@
             src: url('assets/fonts/font.ttf') format('truetype');
         }
 
+        :root {
+            --blasphemous-gold: #916f3a;
+            --blasphemous-red: #4a0f0f;
+            --blasphemous-dark: #1a1a1a;
+            --blasphemous-light: #c7b088;
+        }
+
         body {
             cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use cursor_link as default cursor */
             background: var(--blasphemous-dark);
@@ -121,6 +128,27 @@
             transform: perspective(1000px) rotateY(10deg) translateX(10px);
             box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
             background: rgba(145, 111, 58, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+            background: var(--blasphemous-dark);
+            border-left: 2px solid var(--blasphemous-gold);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(0deg, var(--blasphemous-dark), var(--blasphemous-gold), var(--blasphemous-dark));
+            border: 2px solid var(--blasphemous-gold);
+            box-shadow: 0 0 15px var(--blasphemous-gold);
+        }
+
+        ::-webkit-scrollbar-track {
+            background: linear-gradient(90deg, 
+                var(--blasphemous-dark), 
+                rgba(145, 111, 58, 0.1),
+                var(--blasphemous-dark)
+            );
         }
     </style>
 </head>
