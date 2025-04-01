@@ -599,3 +599,281 @@ body::before {
     from { width: 0; }
     to { width: 100%; }
 }
+
+/* Basic Mobile Optimization */
+@media (max-width: 768px) {
+    :root {
+        --nav-width: 90%;
+        --nav-vertical: 10px;
+        --about-width: 90%;
+        --about-height: auto;
+        --profile-width: 90%;
+        --profile-height: auto;
+        --profile-vertical: auto;
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        position: static;
+        width: 100%;
+    }
+
+    nav button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .about, .profile-section {
+        position: relative;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .profile-section {
+        padding: 10px;
+    }
+
+    .profile-stats {
+        margin-top: 10px;
+    }
+
+    .stat-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stat-label {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+
+    .stat-value.no-bar {
+        padding-right: 0;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    :root {
+        --nav-width: 90%;
+        --nav-vertical: 10px;
+        --about-width: 90%;
+        --about-height: auto;
+        --profile-width: 90%;
+        --profile-height: auto;
+        --profile-vertical: auto;
+    }
+
+    .container {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items horizontally */
+    }
+
+    nav {
+        position: relative; /* Remove fixed positioning */
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin: 10px 0;
+        flex-direction: row; /* Display buttons in a row */
+        justify-content: center; /* Center buttons horizontally */
+        align-items: center; /* Vertically align items */
+        flex-wrap: wrap; /* Allow buttons to wrap */
+    }
+
+    nav button {
+        width: auto; /* Adjust button width */
+        margin: 5px; /* Add spacing between buttons */
+        font-size: 1rem; /* Adjust font size */
+        padding: 5px 10px; /* Adjust padding */
+        clip-path: none; /* Remove clip path */
+    }
+
+    main {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .about {
+        position: relative; /* Remove fixed positioning */
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .profile-section {
+        position: relative; /* Remove fixed positioning */
+        top: auto;
+        right: auto;
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .profile-section {
+        padding: 10px;
+    }
+
+    .profile-stats {
+        margin-top: 10px;
+    }
+
+    .stat-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stat-label {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+
+    .stat-value.no-bar {
+        padding-right: 0;
+    }
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    :root {
+        --nav-width: 100%;
+        --nav-vertical: 0;
+        --about-width: 100%;
+        --about-height: auto;
+        --profile-width: 100%;
+        --profile-height: auto;
+        --profile-vertical: auto;
+    }
+
+    body, html {
+        overflow-x: hidden; /* Prevent horizontal scroll */
+        height: auto; /* Adjust height */
+    }
+
+    .container {
+        flex-direction: column;
+        align-items: stretch; /* Stretch items to full width */
+        padding: 0; /* Remove container padding */
+    }
+
+    nav {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin: 0;
+        flex-direction: column; /* Stack buttons vertically */
+        background-color: rgba(0, 0, 0, 0.8); /* Darker background */
+        border-radius: 0; /* Remove border radius */
+        box-shadow: none; /* Remove shadow */
+        padding: 10px;
+    }
+
+    nav button {
+        width: 100%;
+        margin: 5px 0;
+        font-size: 1rem;
+        padding: 10px;
+        clip-path: none;
+        text-align: center;
+    }
+
+    main {
+        flex-direction: column;
+        height: auto;
+        padding: 10px;
+    }
+
+    .about {
+        position: relative;
+        top: auto;
+        left: auto;
+        width: 100%;
+        margin: 10px 0;
+        border: none; /* Remove border */
+        box-shadow: none; /* Remove shadow */
+        border-radius: 0; /* Remove border radius */
+    }
+
+    .profile-section {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        margin: 10px 0;
+        border: none; /* Remove border */
+        box-shadow: none; /* Remove shadow */
+        border-radius: 0; /* Remove border radius */
+        padding: 10px;
+    }
+
+    .profile-title {
+        text-align: center; /* Center title */
+    }
+
+    .profile-stats {
+        margin-top: 10px;
+    }
+
+    .stat-row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .stat-label {
+        min-width: auto;
+        margin-bottom: 5px;
+    }
+
+    .stat-value.no-bar {
+        padding-right: 0;
+    }
+
+    .cursor-overlay, .mouse-overlay {
+        display: none !important; /* Hide cursor effects */
+    }
+}
+
+#mobile-message {
+    display: none;
+}
+
+/* Mobile Optimization */
+@media (max-width: 768px) {
+    /* Hide everything except the background and message */
+    .container,
+    nav,
+    main,
+    .profile-section,
+    .cursor-overlay,
+    .mouse-overlay,
+    #mute-button,
+    .crt {
+        display: none !important;
+    }
+
+    #mobile-message {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.8);
+        color: var(--blasphemous-light);
+        font-family: 'BlasphemousFont', Arial, sans-serif;
+        font-size: 2rem;
+        text-align: center;
+        padding: 20px;
+        box-sizing: border-box;
+        z-index: 10000;
+    }
+}
