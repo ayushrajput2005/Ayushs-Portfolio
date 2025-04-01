@@ -29,6 +29,10 @@
     --blasphemous-light: #c7b088;
     --blasphemous-scroll: #2a2a2a;
     --blasphemous-glow: 0 0 15px var(--blasphemous-gold);
+
+    /* Profile image dimensions */
+    --profile-image-width: 300px;
+    --profile-image-height: 300px;
 }
 
 @font-face {
@@ -263,7 +267,10 @@ main {
     align-items: center;
     justify-content: flex-start;
     text-align: center;
-    padding: 30px 20px;
+    padding: 20px;
+    width: 350px; /* Decreased base width */
+    right: 5vw; /* Position from right */
+    top: 25vh; /* Align with about section */
     box-sizing: border-box;
     border: 2px solid var(--blasphemous-gold);
     border-radius: 10px;
@@ -274,18 +281,107 @@ main {
 }
 
 .profile-image {
-    width: 120px; /* Increased size */
-    height: 120px;
-    border-radius: 50%; /* Keep the image circular */
-    background-color: #ccc;
-    margin-bottom: 10px; /* Space between the image and text */
+    width: var(--profile-image-width);
+    height: 250px !important;
+    background: url('assets/images/pfp-knight.png') no-repeat top center;
+    background-size:cover;
+    border: 2px solid var(--blasphemous-gold);
+    box-shadow: 0 0 15px var(--blasphemous-gold);
+    margin: 20px auto;
+}
+
+/* Update responsive sizing for different screen sizes */
+@media screen and (max-width: 1600px) {
+    .profile-section {
+        width: 300px;
+        height: 300px;
+    }
+    .profile-image {
+        width: 150px;
+        height: 250px;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .profile-section {
+        width: 280px;
+    }
+    .profile-image {
+        width: 150;
+        height: 250 !important;
+    }
+}
+
+/* Remove the after pseudo-element completely */
+.profile-image::after {
+    display: none;
 }
 
 .profile-section p {
-    margin: 20px 0;
-    font-size: 1.1rem;
+    margin: 15px 0; /* Reduced margin */
+    font-size: 0.9rem; /* Decreased font size */
     color: var(--blasphemous-light);
     text-shadow: 0 0 8px var(--blasphemous-gold);
+}
+
+.profile-stats {
+    width: 100%;
+    margin-top: 20px;
+}
+
+.stat-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    width: 100%;
+    gap: 20px;
+}
+
+.stat-label {
+    flex: 0 0 auto;
+    min-width: 150px;
+    text-align: left;
+    color: var(--blasphemous-light);
+    text-shadow: 0 0 8px var(--blasphemous-gold);
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.stat-bar-container {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 15px; /* Increased gap for better spacing */
+}
+
+.stat-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--blasphemous-red);
+    position: relative;
+    overflow: hidden;
+    border-radius: 2px;
+}
+
+.stat-value {
+    color: var(--blasphemous-gold);
+    text-shadow: 0 0 8px var(--blasphemous-gold);
+    font-size: 1.4rem; /* Increased size */
+    text-align: right;
+    white-space: nowrap; /* Keep text in one line */
+}
+
+.stat-value.no-bar {
+    flex: 1;
+    padding-right: 15px;
+}
+
+.stat-fill {
+    height: 100%;
+    background: var(--blasphemous-gold);
+    box-shadow: 0 0 10px var(--blasphemous-gold);
+    transition: width 1s ease;
 }
 
 /* Add new menu transition effects */
