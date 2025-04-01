@@ -2,7 +2,7 @@
 const bgm = document.getElementById('bgm');
 const muteButton = document.getElementById('mute-button');
 const muteIcon = document.getElementById('mute-icon');
-bgm.volume = 0.3;
+bgm.volume = 0.2;
 
 // Function to play music
 function playMusic() {
