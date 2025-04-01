@@ -5,18 +5,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Achievements</title>
     <style>
+        @font-face {
+            font-family: 'BlasphemousFont';
+            src: url('assets/fonts/font.ttf') format('truetype');
+        }
+
         body {
             cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use cursor_link as default cursor */
+            background: var(--blasphemous-dark);
+            color: var(--blasphemous-light);
+            font-family: 'BlasphemousFont', Arial, sans-serif;
+            padding: 20px;
+            overflow-y: auto;
+            height: auto;
+            min-height: 100%;
+        }
+
+        h2 {
+            color: var(--blasphemous-gold);
+            text-shadow: 0 0 10px var(--blasphemous-gold);
+            border-bottom: 2px solid var(--blasphemous-gold);
+            padding-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 15px 0;
+            padding: 15px;
+            border: 1px solid var(--blasphemous-gold);
+            background: rgba(0, 0, 0, 0.3);
+            text-shadow: 0 0 5px var(--blasphemous-light);
+            transition: all 0.3s ease;
+        }
+
+        li:hover {
+            box-shadow: 0 0 15px var(--blasphemous-gold);
+            transform: translateX(10px);
+        }
+
+        /* Hide default scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        html {
+            scrollbar-width: none;
+        }
+
+        .achievement-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .achievement-item {
+            margin: 25px 0;
+            border: 1px solid var(--blasphemous-gold);
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            transform-origin: left center;
+        }
+
+        .achievement-item:hover {
+            transform: perspective(1000px) rotateY(10deg) translateX(10px);
+            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
+            background: rgba(145, 111, 58, 0.1);
+        }
+
+        .achievement-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+
+        .achievement-name {
+            font-family: 'BlasphemousFont', Arial, sans-serif;
+            font-size: 1.2rem;
+            color: var(--blasphemous-gold);
+            text-shadow: 0 0 8px var(--blasphemous-gold);
+            letter-spacing: 2px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 4px;
+            background: var(--blasphemous-red);
+            margin-top: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--blasphemous-gold);
+            width: 0%;
+            transition: width 1s ease;
+            box-shadow: 0 0 10px var(--blasphemous-gold);
+        }
+
+        .achievement-name, .project-name, .extra-name {
+            font-family: 'BlasphemousFont', Arial, sans-serif;
+        }
+
+        /* Add same hover effect */
+        .achievement-item, .project-item, .extra-item {
+            transition: all 0.3s ease;
+            transform-origin: left center;
+        }
+
+        .achievement-item:hover, .project-item:hover, .extra-item:hover {
+            transform: perspective(1000px) rotateY(10deg) translateX(10px);
+            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
+            background: rgba(145, 111, 58, 0.1);
         }
     </style>
 </head>
 <body>
     <h2>Achievements</h2>
-    <ul>
-        <li>Won Hackathon 2022</li>
-        <li>Published a research paper on AI</li>
-        <li>Completed 100+ projects on GitHub</li>
-        <li>Certified AWS Developer</li>
+    <ul class="achievement-list">
+        <li class="achievement-item">
+            <div class="achievement-header">
+                <span class="achievement-name">Won Hackathon 2022</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </li>
+        <li class="achievement-item">
+            <div class="achievement-header">
+                <span class="achievement-name">Published a research paper on AI</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </li>
+        <li class="achievement-item">
+            <div class="achievement-header">
+                <span class="achievement-name">Completed 100+ projects on GitHub</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </li>
+        <li class="achievement-item">
+            <div class="achievement-header">
+                <span class="achievement-name">Certified AWS Developer</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 100%"></div>
+            </div>
+        </li>
     </ul>
 </body>
 </html>

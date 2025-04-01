@@ -2,16 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Portfolio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="background-image"></div>
+    <div class="menu-transition"></div>
     <div class="container">
-        <header>
-            <h1>Home Page</h1>
-        </header>
         <nav>
             <button onclick="loadSection('about.html')">About</button>
             <button onclick="loadSection('skills.html')">Skills</button>
@@ -21,7 +19,7 @@
         </nav>
         <main>
             <section class="about">
-                <iframe id="content-frame" src="skills.html" frameborder="0"></iframe>
+                <iframe id="content-frame" src="about.html" frameborder="0"></iframe>
             </section>
         </main>
         <aside class="profile-section">
@@ -29,7 +27,10 @@
             <p>Hi, I'm Ayush. I am a software developer with a passion for creating innovative solutions and building impactful projects.</p>
         </aside>
     </div>
-    <div class="cursor-circle"></div> <!-- Pixelated circle -->
+    <div class="cursor-overlay">
+        <div class="cursor-circle"></div>
+    </div>
+    <div class="mouse-overlay"></div>
     <script src="script.js"></script>
 </body>
 </html>

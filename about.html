@@ -6,12 +6,61 @@
     <title>About</title>
     <style>
         body {
-            cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use cursor_link as default cursor */
+            background: var(--blasphemous-dark);
+            color: var(--blasphemous-light);
+            font-family: 'CustomFont', Arial, sans-serif;
+            padding: 20px;
+            cursor: url('assets/images/cursor_link.png') 0 0, auto;
+            overflow-y: auto;
+        }
+
+        h2 {
+            color: var(--blasphemous-gold);
+            text-shadow: 0 0 10px var(--blasphemous-gold);
+            border-bottom: 2px solid var(--blasphemous-gold);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-variant: small-caps;
+            letter-spacing: 2px;
+        }
+
+        .about-content {
+            border: 1px solid var(--blasphemous-gold);
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 15px rgba(145, 111, 58, 0.2);
+        }
+
+        p {
+            line-height: 1.6;
+            text-shadow: 0 0 5px var(--blasphemous-light);
+            margin: 10px 0;
+        }
+
+        .highlight {
+            color: var(--blasphemous-gold);
+            text-shadow: 0 0 8px var(--blasphemous-gold);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            display: none;
+        }
+        
+        /* Firefox */
+        html {
+            scrollbar-width: none;
         }
     </style>
 </head>
 <body>
-    <h2>About</h2>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. I am passionate about software development and enjoy working on innovative projects that make a difference.</p>
+    <h2>About The Pilgrim</h2>
+    <div class="about-content">
+        <p>Greetings, I am <span class="highlight">Ayush</span>, a devoted craftsman in the realm of software development. My journey through the digital landscapes has forged me into a versatile developer, wielding both frontend and backend technologies with precision.</p>
+        
+        <p>In this eternal quest for knowledge, I have mastered various programming arts, from the ancient scripts of C++ to the modern miracles of React. Each project I undertake is a testament to my commitment to creating solutions that not only function flawlessly but also inspire.</p>
+        
+        <p>My path is guided by the principles of clean code and innovative design, always seeking to push the boundaries of what's possible in the digital realm.</p>
+    </div>
 </body>
 </html>

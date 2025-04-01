@@ -1,8 +1,8 @@
 :root {
     /* Variables for nav alignment and size */
-    --nav-horizontal: 5%; /* Horizontal alignment of nav */
+    --nav-horizontal: 1px; /* Horizontal alignment of nav */
     --nav-vertical: 20px; /* Vertical alignment of nav */
-    --nav-width: 705px; /* Width of nav */
+    --nav-width: 740px; /* Width of nav */
     --nav-height: auto; /* Height of nav */
 
     /* Variables for about alignment and size */
@@ -13,36 +13,62 @@
 
     /* Variables for profile section alignment and size */
     --profile-horizontal: 5%; /* Horizontal alignment of profile section */
-    --profile-vertical: 178px; /* Vertical alignment of profile section */
+    --profile-vertical: 119px; /* Vertical alignment of profile section */
     --profile-width: 400px; /* Width of profile section */
-    --profile-height: 524px; /* Height of profile section */
+    --profile-height: 590px; /* Height of profile section */
+
+    /* Add new theme colors */
+    --souls-gold: #c7a649;
+    --souls-dark: rgba(0, 0, 0, 0.85);
+    --souls-glow: 0 0 15px var(--souls-gold);
+
+    /* Blasphemous theme colors */
+    --blasphemous-gold: #916f3a;
+    --blasphemous-red: #4a0f0f;
+    --blasphemous-dark: #1a1a1a;
+    --blasphemous-light: #c7b088;
+    --blasphemous-scroll: #2a2a2a;
+    --blasphemous-glow: 0 0 15px var(--blasphemous-gold);
 }
 
 @font-face {
-    font-family: 'CustomFont';
+    font-family: 'BlasphemousFont';
     src: url('assets/fonts/font.ttf') format('truetype');
 }
 
 body, html {
     margin: 0;
-    font-family: 'CustomFont', Arial, sans-serif;
+    font-family: 'BlasphemousFont', Arial, sans-serif;
     cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use link cursor as the general cursor */
     overflow: hidden; /* Prevent scrolling */
     height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+.cursor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 99999; /* Ensure it's above all other elements */
 }
 
 .cursor-circle {
     position: fixed;
     width: 40px; /* Normal size */
     height: 40px; /* Normal size */
-    background: url('assets/images/circle1.png') no-repeat center center; /* Use circle1.png */
+    background: url('assets/images/circle.png') no-repeat center center; /* Use circle.png */
     background-size: contain; /* Ensure the image fits within the circle */
     pointer-events: none; /* Prevent interaction with the circle */
-    z-index: 9999; /* Increased z-index to stay on top */
+    z-index: inherit; /* Ensure it's above everything */
     transform: translate(-50%, -50%) scale(1); /* Default scale */
     transition: transform 0.2s ease, opacity 0.2s ease; /* Smooth hover effect */
     image-rendering: pixelated; /* Pixelated style */
     opacity: 0.9; /* Default opacity */
+    mix-blend-mode: difference;
+    will-change: transform;
+    backface-visibility: hidden;
 }
 
 nav button:hover ~ .cursor-circle,
@@ -60,9 +86,14 @@ a:hover ~ .cursor-circle {
     z-index: -1;
     background-size: cover;
     background-position: center;
-    background-image: url('assets/images/background.jpg'); /* Ensure this path is correct */
+    background-image: url('assets/images/background1.jpg');
     background-color: #000; /* Fallback color */
-    filter: blur(5px) brightness(0.7); /* Adds blur and darkens the image */
+    filter: blur(5px) brightness(0.5);
+    display: block; /* Restore visibility */
+}
+
+.background-video {
+    display: none; /* Hide video background */
 }
 
 .container {
@@ -80,6 +111,9 @@ header h1 {
 }
 
 nav {
+    position: fixed;
+    top: 10vh;
+    left: 5vw;
     margin-top: var(--nav-vertical);
     margin-left: var(--nav-horizontal);
     width: var(--nav-width);
@@ -93,32 +127,90 @@ nav {
     filter: none; /* Remove darkening effect */
     justify-content: flex-start; /* Align navigation bar and buttons to the left */
     align-self: flex-start; /* Align the entire nav bar to the left */
-    position: relative; /* Allow precise positioning */
 }
 
 nav button {
-    width: 150px; /* Set a fixed width for all buttons */
-    height: 60px; /* Increase button height */
-    background: url('assets/images/button3.png') no-repeat center center; /* Use button image */
-    background-size: 160% 180%; /* Increase the size of the background image */
-    cursor: inherit; /* Inherit the general cursor */
-    border: none; /* Remove border */
-    border-radius: 5px;
-    font-family: 'CustomFont', Arial, sans-serif; /* Use custom font for button text */
-    color: #fff; /* Ensure text is visible */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); /* Improve text visibility */
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Center text inside the button */
-    font-size: 1.3rem; /* Adjust font size */
-    white-space: nowrap; /* Prevent text from wrapping */
-    transition: transform 0.2s ease, font-size 0.2s ease; /* Smooth hover effect */
-    filter: none; /* Remove glow effect */
+    width: 180px; /* Wider buttons for ornate design */
+    height: 65px; /* Taller buttons */
+    background: var(--blasphemous-dark);
+    cursor: inherit;
+    border: none; /* Remove default border */
+    position: relative; /* For pseudo-elements */
+    color: var(--blasphemous-light);
+    text-shadow: 0 0 8px var(--blasphemous-gold);
+    letter-spacing: 2px;
+    font-variant: small-caps;
+    font-size: 1.2rem;
+    font-family: 'BlasphemousFont', Arial, sans-serif;
+    transition: all 0.3s ease;
+    padding: 0 15px;
+    clip-path: polygon(
+        15px 0,
+        calc(100% - 15px) 0,
+        100% 50%,
+        calc(100% - 15px) 100%,
+        15px 100%,
+        0 50%
+    );
+}
+
+nav button.selected {
+    background: linear-gradient(45deg, var(--blasphemous-gold), transparent);
+    text-shadow: 0 0 15px var(--blasphemous-gold);
+    font-size: 1.35rem;
+    transform: scale(1.05);
+}
+
+nav button.selected::after {
+    background: linear-gradient(45deg, var(--blasphemous-gold), var(--blasphemous-gold));
+    filter: brightness(1.5);
+}
+
+nav button::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    right: 2px;
+    bottom: 2px;
+    background: var(--blasphemous-dark);
+    z-index: -1;
+    clip-path: polygon(
+        15px 0,
+        calc(100% - 15px) 0,
+        100% 50%,
+        calc(100% - 15px) 100%,
+        15px 100%,
+        0 50%
+    );
+}
+
+nav button::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(45deg, var(--blasphemous-gold), transparent);
+    z-index: -2;
+    clip-path: polygon(
+        15px 0,
+        calc(100% - 15px) 0,
+        100% 50%,
+        calc(100% - 15px) 100%,
+        15px 100%,
+        0 50%
+    );
 }
 
 nav button:hover {
-    transform: scale(1.1); /* Slightly increase button size on hover */
-    font-size: 1.4rem; /* Slightly increase text size on hover */
+    transform: scale(1.05); /* Slightly reduce scale effect */
+    font-size: 1.35rem;
+    text-shadow: 0 0 15px var(--blasphemous-gold);
+    background: linear-gradient(45deg, var(--blasphemous-dark), transparent);
+}
+
+nav button:hover::after {
+    background: linear-gradient(45deg, var(--blasphemous-gold), var(--blasphemous-gold));
+    filter: brightness(1.5);
 }
 
 main {
@@ -132,54 +224,119 @@ main {
 }
 
 .about {
-    display: block; /* Ensure it behaves as a block-level element */
+    position: fixed;
+    top: 25vh;
+    left: 5vw;
+    height: 65vh;
+    width: 55vw;
+    overflow: hidden;
+    display: block;
     margin-top: var(--about-vertical);
     margin-left: var(--about-horizontal);
-    width: var(--about-width); /* Editable width */
-    height: var(--about-height); /* Editable height */
-    padding: 0; /* Remove padding for iframe */
-    border: 1px solid #000;
-    border-radius: 10px; /* Restore rounded edges */
-    box-sizing: border-box; /* Include padding in width and height */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional background for clarity */
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor style matches the rest of the page */
+    padding: 0;
+    border: 2px solid var(--blasphemous-gold);
+    border-radius: 10px;
+    box-sizing: border-box;
+    background: var(--blasphemous-dark);
+    box-shadow: var(--blasphemous-glow);
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
 }
 
 .about iframe {
-    width: 100%; /* Match the width of the .about section */
-    height: 100%; /* Match the height of the .about section */
-    border: none; /* Remove iframe border */
-    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use the same cursor as cursor_link */
-    pointer-events: none; /* Prevent iframe from blocking cursor events */
+    width: 100%;
+    height: 100%;
+    border: none;
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
+    pointer-events: auto;
+    position: relative;
+    z-index: 1;
+    overflow-y: auto;
+    will-change: pointer-events;
+    transition: none;
+    -webkit-transform: translate3d(0,0,0);
 }
 
 .profile-section {
-    position: absolute; /* Position relative to the display */
-    top: var(--profile-vertical);
-    right: var(--profile-horizontal); /* Align to the right */
-    width: var(--profile-width);
-    height: var(--profile-height);
+    position: fixed;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     text-align: center;
-    box-sizing: border-box; /* Include padding in width and height */
-    border: 1px solid #000; /* Optional border for visual clarity */
-    border-radius: 10px; /* Rounded edges for the section */
-    background-color: rgba(255, 255, 255, 0.8); /* Optional background for clarity */
+    padding: 30px 20px;
+    box-sizing: border-box;
+    border: 2px solid var(--blasphemous-gold);
+    border-radius: 10px;
+    background: var(--blasphemous-dark);
+    box-shadow: var(--blasphemous-glow);
+    z-index: 100;
+    transition: all 0.3s ease;
 }
 
 .profile-image {
-    width: 100px; /* Adjust the size of the profile image */
-    height: 100px; /* Match the width */
+    width: 120px; /* Increased size */
+    height: 120px;
     border-radius: 50%; /* Keep the image circular */
     background-color: #ccc;
     margin-bottom: 10px; /* Space between the image and text */
 }
 
 .profile-section p {
-    margin: 0;
-    font-size: 1rem;
-    color: #333;
+    margin: 20px 0;
+    font-size: 1.1rem;
+    color: var(--blasphemous-light);
+    text-shadow: 0 0 8px var(--blasphemous-gold);
+}
+
+/* Add new menu transition effects */
+.menu-transition {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease;
+    z-index: 9999;
+}
+
+/* Custom Scrollbar - Updated Design */
+::-webkit-scrollbar {
+    width: 12px;
+    background: var(--blasphemous-dark);
+    border-left: 2px solid var(--blasphemous-gold);
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(0deg, var(--blasphemous-dark), var(--blasphemous-gold), var(--blasphemous-dark));
+    border: 2px solid var(--blasphemous-gold);
+    box-shadow: 0 0 15px var(--blasphemous-gold);
+}
+
+::-webkit-scrollbar-track {
+    background: linear-gradient(90deg, 
+        var(--blasphemous-dark), 
+        rgba(145, 111, 58, 0.1),
+        var(--blasphemous-dark)
+    );
+    border-left: 2px solid var(--blasphemous-gold);
+}
+
+.mouse-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 99998;
+    background: radial-gradient(
+        circle 60px at var(--mouse-x) var(--mouse-y),
+        rgba(145, 111, 58, 0.15),
+        transparent 50%
+    );
+    mix-blend-mode: screen;
+    transition: background 0.1s;
 }
