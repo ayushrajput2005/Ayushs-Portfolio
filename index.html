@@ -22,8 +22,23 @@
                 <iframe id="content-frame" src="about.html" frameborder="0"></iframe>
             </section>
         </main>
+        <!-- Add social media links section -->
+        <div class="social-links">
+            <a href="https://linkedin.com" target="_blank">
+                <img src="assets/logo/linkedin.png" alt="LinkedIn">
+            </a>
+            <a href="https://github.com" target="_blank">
+                <img src="assets/logo/github.png" alt="GitHub">
+            </a>
+            <a href="https://instagram.com" target="_blank">
+                <img src="assets/logo/instagram.png" alt="Instagram">
+            </a>
+            <a href="mailto:example@example.com">
+                <img src="assets/logo/email.png" alt="Email">
+            </a>
+        </div>
         <aside class="profile-section">
-            <div class="profile-image"></div>
+            <div class="profile-title">PLAYER STATISTICS</div>
             <div class="profile-stats">
                 <div class="stat-row">
                     <span class="stat-label">CLASS :</span>
@@ -67,6 +82,10 @@
         <div class="cursor-circle"></div>
     </div>
     <div class="mouse-overlay"></div>
+    <audio id="bgm" src="assets/sfx/bgm.mp3" loop autoplay></audio>
+    <button id="mute-button" class="mute-button">
+        <img id="mute-icon" src="assets/logo/unmute.png" alt="Mute/Unmute">
+    </button>
     <script src="script.js"></script>
 </body>
 </html>

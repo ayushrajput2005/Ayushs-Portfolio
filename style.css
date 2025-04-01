@@ -280,14 +280,23 @@ main {
     transition: all 0.3s ease;
 }
 
+.profile-title {
+    font-family: 'BlasphemousFont', Arial, sans-serif;
+    font-size: 1.5rem;
+    color: #ffd700; /* Brighter gold color */
+    text-shadow: 0 0 15px #ffd700; /* Glow effect */
+    margin-bottom: 20px;
+    transition: all 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.profile-title:hover {
+    color: #fff700; /* Even brighter color on hover */
+    text-shadow: 0 0 25px #ffd33382, 0 0 50px #f7d42390; /* Stronger glow on hover */
+}
+
+/* Remove profile image styles */
 .profile-image {
-    width: var(--profile-image-width);
-    height: 250px !important;
-    background: url('assets/images/pfp-knight.png') no-repeat top center;
-    background-size:cover;
-    border: 2px solid var(--blasphemous-gold);
-    box-shadow: 0 0 15px var(--blasphemous-gold);
-    margin: 20px auto;
+    display: none;
 }
 
 /* Update responsive sizing for different screen sizes */
@@ -435,4 +444,111 @@ main {
     );
     mix-blend-mode: screen;
     transition: background 0.1s;
+}
+
+.extra-link {
+    display: block; /* Make the entire tile clickable */
+    text-decoration: none; /* Remove underline from hyperlink */
+    color: inherit; /* Inherit text color */
+}
+
+.extra-link:hover .extra-item {
+    transform: scale(1.05); /* Slightly enlarge on hover */
+    box-shadow: 0 0 15px rgba(145, 111, 58, 0.5); /* Add subtle glow */
+    background: rgba(145, 111, 58, 0.2); /* Slightly brighter background */
+}
+
+.project-link, .extra-link {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png */
+}
+
+.project-link:hover, .extra-link:hover {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png on hover */
+}
+
+.project-item, .extra-item, .project-link, .extra-link {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png */
+}
+
+.project-item:hover, .extra-item:hover, .project-link:hover, .extra-link:hover {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Ensure cursor remains as cursor_link.png on hover */
+}
+
+/* Ensure cursor_link.png appears on all hyperlinks */
+a {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Set custom cursor for all links */
+}
+
+a:hover {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Maintain custom cursor on hover */
+}
+
+/* Ensure cursor_link.png appears on all links */
+a, .project-link, .extra-link {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
+}
+
+a:hover, .project-link:hover, .extra-link:hover {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
+}
+
+/* Set cursor_link.png as the default cursor for specific pages */
+body.contact-page, body.certificates-page, body.credits-page, body.portfolio-project-page {
+    cursor: url('assets/images/cursor_link.png') 0 0, auto;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px; /* Space between icons */
+    margin-top: 20px;
+}
+
+.social-links a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.3s ease;
+}
+
+social-links a:hover {
+    transform: scale(1.2); /* Slightly enlarge on hover */
+}
+
+.social-links img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ensure the image fits within the container */
+    border-radius: 50%; /* Make the icons circular */
+    box-shadow: 0 0 10px var(--blasphemous-gold); /* Add a subtle glow */
+    transition: box-shadow 0.3s ease;
+}
+
+social-links img:hover {
+    box-shadow: 0 0 15px var(--blasphemous-gold); /* Stronger glow on hover */
+}
+
+.mute-button {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.mute-button img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease, opacity 0.3s ease; /* Smooth transition for transform and opacity */
+}
+
+.mute-button img:hover {
+    transform: scale(1.1); /* Slightly enlarge on hover */
+    opacity: 0.8; /* Slightly fade on hover */
 }

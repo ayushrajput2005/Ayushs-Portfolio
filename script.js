@@ -13,11 +13,30 @@ document.addEventListener('keydown', function(e) {
 
 // Placeholder for future JavaScript functionality
 
-// Add click sound functionality
+// Fix click sound repetition
 document.querySelectorAll('nav button').forEach(button => {
     button.addEventListener('click', () => {
         const audio = new Audio('assets/sfx/click.mp3');
-        audio.play();
+        audio.currentTime = 0; // Reset audio to the start
+        audio.play(); // Play the click sound
+    });
+});
+
+// Add click sound effect to navigation buttons
+document.querySelectorAll('nav button').forEach(button => {
+    button.addEventListener('click', () => {
+        const audio = new Audio('assets/sfx/click.mp3'); // Ensure the path is correct
+        audio.currentTime = 0; // Reset audio to the start
+        audio.play().catch(err => console.error('Error playing sound:', err)); // Play the click sound
+    });
+});
+
+// Add click sound effect to tiles in extras
+document.querySelectorAll('.extra-item').forEach(item => {
+    item.addEventListener('click', () => {
+        const audio = new Audio('assets/sfx/click.mp3'); // Ensure the path is correct
+        audio.currentTime = 0; // Reset audio to the start
+        audio.play().catch(err => console.error('Error playing sound:', err)); // Play the click sound
     });
 });
 
@@ -139,25 +158,25 @@ function applyStylesToIframe(iframe) {
     }
 }
 
-// Enhanced menu transition
+// Enhanced menu transition for iframe loading
 function loadSection(page) {
-    // Remove selected class from all buttons
-    document.querySelectorAll('nav button').forEach(btn => btn.classList.remove('selected'));
-    
-    // Add selected class to clicked button
-    const clickedButton = document.querySelector(`nav button[onclick="loadSection('${page}')"]`);
-    if (clickedButton) {
-        clickedButton.classList.add('selected');
+    // Remove selected class from all buttons and links
+    document.querySelectorAll('nav button, .extra-item a').forEach(btn => btn.classList.remove('selected'));
+
+    // Add selected class to the clicked button or link
+    const clickedElement = document.querySelector(`nav button[onclick="loadSection('${page}')"], .extra-item a[onclick="loadSection('${page}'); return false;"]`);
+    if (clickedElement) {
+        clickedElement.classList.add('selected');
     }
 
-    // Existing loading logic
+    // Load the page into the iframe
     const iframe = document.getElementById('content-frame');
     const transition = document.querySelector('.menu-transition');
-    
+
     // Play sound and show transition
     SOUNDS.select.play();
     transition.style.opacity = '1';
-    
+
     setTimeout(() => {
         iframe.src = page;
         iframe.onload = () => {
@@ -240,4 +259,26 @@ window.addEventListener('load', () => {
             console.log('Could not apply styles to iframe content');
         }
     };
+});
+
+// Background music mute/unmute functionality
+const bgm = document.getElementById('bgm');
+const muteButton = document.getElementById('mute-button');
+const muteIcon = document.getElementById('mute-icon');
+
+// Ensure the background music starts playing
+bgm.volume = 0.5; // Set initial volume
+bgm.play().catch(err => console.error('Error playing background music:', err));
+
+muteButton.addEventListener('click', () => {
+    if (bgm.muted) {
+        bgm.muted = false;
+        bgm.currentTime = 0; // Reset music to the start
+        bgm.play().catch(err => console.error('Error playing background music:', err));
+        muteIcon.src = 'assets/logo/unmute.png'; // Update icon to unmute
+    } else {
+        bgm.muted = true;
+        bgm.pause(); // Pause the music
+        muteIcon.src = 'assets/logo/mute.png'; // Update icon to mute
+    }
 });

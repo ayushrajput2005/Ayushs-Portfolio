@@ -95,13 +95,12 @@
             padding: 15px;
             background: rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            transform-origin: left center;
         }
 
         .project-item:hover {
-            transform: perspective(1000px) rotateY(10deg) translateX(10px);
-            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
-            background: rgba(145, 111, 58, 0.1);
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 0 15px rgba(145, 111, 58, 0.5); /* Add subtle glow */
+            background: rgba(145, 111, 58, 0.2); /* Slightly brighter background */
         }
 
         .project-header {
@@ -134,43 +133,53 @@
             transition: width 1s ease;
             box-shadow: 0 0 10px var(--blasphemous-gold);
         }
+
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+        }
     </style>
 </head>
 <body>
     <h2>Projects</h2>
     <ul class="project-list">
         <li class="project-item">
-            <div class="project-header">
-                <span class="project-name">Portfolio Website</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <a href="portfolio-project.html" onclick="playClickSound();" class="project-link">
+                <div class="project-header">
+                    <span class="project-name">Portfolio Website</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </a>
         </li>
         <li class="project-item">
-            <div class="project-header">
-                <span class="project-name">E-commerce Platform</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <a href="#" onclick="playClickSound(); return false;" class="project-link">
+                <div class="project-header">
+                    <span class="project-name">Still In Progress</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </a>
         </li>
         <li class="project-item">
-            <div class="project-header">
-                <span class="project-name">Chat Application</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </li>
-        <li class="project-item">
-            <div class="project-header">
-                <span class="project-name">Weather Forecast App</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <a href="#" onclick="playClickSound(); return false;" class="project-link">
+                <div class="project-header">
+                    <span class="project-name">Still In Progress</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </a>
         </li>
     </ul>
+    <script>
+        function playClickSound() {
+            const audio = new Audio('assets/sfx/click.mp3');
+            audio.currentTime = 0;
+            audio.play().catch(err => console.error('Error playing sound:', err));
+        }
+    </script>
 </body>
 </html>

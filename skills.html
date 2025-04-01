@@ -60,13 +60,13 @@
             padding: 15px;
             background: rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            transform-origin: left center;
+            transform-origin: center center; /* Remove tilt origin */
         }
 
         .skill-item:hover {
-            transform: perspective(1000px) rotateY(10deg) translateX(10px);
-            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
-            background: rgba(145, 111, 58, 0.1);
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 0 15px rgba(145, 111, 58, 0.5); /* Add subtle glow */
+            background: rgba(145, 111, 58, 0.2); /* Slightly brighter background */
         }
 
         .skill-header {

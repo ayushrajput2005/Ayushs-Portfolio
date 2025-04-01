@@ -18,14 +18,12 @@
         }
 
         body {
-            cursor: url('assets/images/cursor_link.png') 0 0, auto; /* Use cursor_link as default cursor */
             background: var(--blasphemous-dark);
             color: var(--blasphemous-light);
             font-family: 'BlasphemousFont', Arial, sans-serif;
             padding: 20px;
             overflow-y: auto;
-            height: auto;
-            min-height: 100%;
+            cursor: url('assets/images/cursor_link.png') 0 0, auto;
         }
 
         h2 {
@@ -33,34 +31,12 @@
             text-shadow: 0 0 10px var(--blasphemous-gold);
             border-bottom: 2px solid var(--blasphemous-gold);
             padding-bottom: 10px;
+            margin-bottom: 20px;
         }
 
         ul {
             list-style: none;
             padding: 0;
-        }
-
-        li {
-            margin: 15px 0;
-            padding: 15px;
-            border: 1px solid var(--blasphemous-gold);
-            background: rgba(0, 0, 0, 0.3);
-            text-shadow: 0 0 5px var(--blasphemous-light);
-            transition: all 0.3s ease;
-        }
-
-        li:hover {
-            box-shadow: 0 0 15px var(--blasphemous-gold);
-            transform: translateX(10px);
-        }
-
-        /* Hide default scrollbar */
-        ::-webkit-scrollbar {
-            display: none;
-        }
-        
-        html {
-            scrollbar-width: none;
         }
 
         .achievement-list {
@@ -74,13 +50,12 @@
             padding: 15px;
             background: rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            transform-origin: left center;
         }
 
         .achievement-item:hover {
-            transform: perspective(1000px) rotateY(10deg) translateX(10px);
-            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
-            background: rgba(145, 111, 58, 0.1);
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 0 15px rgba(145, 111, 58, 0.5); /* Add subtle glow */
+            background: rgba(145, 111, 58, 0.2); /* Slightly brighter background */
         }
 
         .achievement-header {
@@ -109,25 +84,9 @@
         .progress-fill {
             height: 100%;
             background: var(--blasphemous-gold);
-            width: 0%;
+            width: 100%;
             transition: width 1s ease;
             box-shadow: 0 0 10px var(--blasphemous-gold);
-        }
-
-        .achievement-name, .project-name, .extra-name {
-            font-family: 'BlasphemousFont', Arial, sans-serif;
-        }
-
-        /* Add same hover effect */
-        .achievement-item, .project-item, .extra-item {
-            transition: all 0.3s ease;
-            transform-origin: left center;
-        }
-
-        .achievement-item:hover, .project-item:hover, .extra-item:hover {
-            transform: perspective(1000px) rotateY(10deg) translateX(10px);
-            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
-            background: rgba(145, 111, 58, 0.1);
         }
 
         /* Custom Scrollbar */
@@ -157,34 +116,34 @@
     <ul class="achievement-list">
         <li class="achievement-item">
             <div class="achievement-header">
-                <span class="achievement-name">Won Hackathon 2022</span>
+                <span class="achievement-name">Still In Progress</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 100%"></div>
+                <div class="progress-fill"></div>
             </div>
         </li>
         <li class="achievement-item">
             <div class="achievement-header">
-                <span class="achievement-name">Published a research paper on AI</span>
+                <span class="achievement-name">Still In Progress</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 100%"></div>
+                <div class="progress-fill"></div>
             </div>
         </li>
         <li class="achievement-item">
             <div class="achievement-header">
-                <span class="achievement-name">Completed 100+ projects on GitHub</span>
+                <span class="achievement-name">Still In Progress</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 100%"></div>
+                <div class="progress-fill"></div>
             </div>
         </li>
         <li class="achievement-item">
             <div class="achievement-header">
-                <span class="achievement-name">Certified AWS Developer</span>
+                <span class="achievement-name">Still In Progress</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 100%"></div>
+                <div class="progress-fill"></div>
             </div>
         </li>
     </ul>

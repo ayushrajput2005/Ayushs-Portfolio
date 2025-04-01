@@ -95,13 +95,12 @@
             padding: 15px;
             background: rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
-            transform-origin: left center;
         }
 
         .extra-item:hover {
-            transform: perspective(1000px) rotateY(10deg) translateX(10px);
-            box-shadow: -10px 5px 15px rgba(145, 111, 58, 0.3);
-            background: rgba(145, 111, 58, 0.1);
+            transform: scale(1.05); /* Slightly enlarge on hover */
+            box-shadow: 0 0 15px rgba(145, 111, 58, 0.5); /* Add subtle glow */
+            background: rgba(145, 111, 58, 0.2); /* Slightly brighter background */
         }
 
         .extra-header {
@@ -134,43 +133,60 @@
             transition: width 1s ease;
             box-shadow: 0 0 10px var(--blasphemous-gold);
         }
+
+        .extra-link {
+            text-decoration: none; /* Remove underline */
+            color: inherit; /* Inherit text color */
+        }
+
+        .extra-link:hover {
+            text-decoration: none; /* Ensure no underline on hover */
+        }
     </style>
 </head>
 <body>
     <h2>Extras</h2>
     <ul class="extra-list">
         <li class="extra-item">
-            <div class="extra-header">
-                <span class="extra-name">Photography</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <a href="credits.html" onclick="loadSection('credits.html'); return false;" class="extra-link">
+                <div class="extra-header">
+                    <span class="extra-name">Credits</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </a>
         </li>
         <li class="extra-item">
-            <div class="extra-header">
-                <span class="extra-name">Travel Blogs</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <a href="contact.html" onclick="loadSection('contact.html'); return false;" class="extra-link">
+                <div class="extra-header">
+                    <span class="extra-name">Deliver Your Message</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </a>
         </li>
         <li class="extra-item">
-            <div class="extra-header">
-                <span class="extra-name">Open Source Contributions</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-        </li>
-        <li class="extra-item">
-            <div class="extra-header">
-                <span class="extra-name">Public Speaking</span>
-            </div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
+            <a href="certificates.html" onclick="loadSection('certificates.html'); return false;" class="extra-link">
+                <div class="extra-header">
+                    <span class="extra-name">My Certifications</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </a>
         </li>
     </ul>
+    <script>
+        // Add click sound effect to all tiles
+        document.querySelectorAll('.extra-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const audio = new Audio('assets/sfx/click.mp3'); // Ensure the path is correct
+                audio.currentTime = 0; // Reset audio to the start
+                audio.play().catch(err => console.error('Error playing sound:', err)); // Play the click sound
+            });
+        });
+    </script>
 </body>
 </html>
