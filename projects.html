@@ -177,6 +177,7 @@
     <script>
         function playClickSound() {
             const audio = new Audio('assets/sfx/click.mp3');
+            audio.volume = 0.2; // Reduce volume
             audio.currentTime = 0;
             audio.play().catch(err => console.error('Error playing sound:', err));
         }

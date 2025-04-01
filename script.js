@@ -2,7 +2,7 @@
 const bgm = document.getElementById('bgm');
 const muteButton = document.getElementById('mute-button');
 const muteIcon = document.getElementById('mute-icon');
-bgm.volume = 0.2;
+bgm.volume = 0.15;
 
 // Function to play music
 function playMusic() {
@@ -61,6 +61,7 @@ document.addEventListener('keydown', function(e) {
 document.querySelectorAll('nav button').forEach(button => {
     button.addEventListener('click', () => {
         const audio = new Audio('assets/sfx/click.mp3');
+        audio.volume = 0.2; // Reduce volume
         audio.currentTime = 0;
         audio.play();
     });
@@ -69,6 +70,7 @@ document.querySelectorAll('nav button').forEach(button => {
 document.querySelectorAll('nav button').forEach(button => {
     button.addEventListener('click', () => {
         const audio = new Audio('assets/sfx/click.mp3');
+        audio.volume = 0.2; // Reduce volume
         audio.currentTime = 0;
         audio.play().catch(err => console.error('Error playing sound:', err));
     });
@@ -77,6 +79,7 @@ document.querySelectorAll('nav button').forEach(button => {
 document.querySelectorAll('.extra-item').forEach(item => {
     item.addEventListener('click', () => {
         const audio = new Audio('assets/sfx/click.mp3');
+        audio.volume = 0.2; // Reduce volume
         audio.currentTime = 0;
         audio.play().catch(err => console.error('Error playing sound:', err));
     });
