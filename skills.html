@@ -85,12 +85,9 @@
 
         .skill-level {
             font-family: 'BlasphemousFont', Arial, sans-serif;
-            width: 100px;
-            background: transparent;
-            border: 1px solid var(--blasphemous-gold);
+            font-size: 1rem;
             color: var(--blasphemous-light);
-            padding: 2px 5px;
-            box-shadow: 0 0 10px var(--blasphemous-gold);
+            text-shadow: 0 0 8px var(--blasphemous-gold);
         }
 
         .progress-bar {
@@ -126,81 +123,67 @@
     <ul class="skill-list">
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">JavaScript Sorcery</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">Java</span>
+                <span class="skill-level">Skill Level: Intermediate</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 70%"></div>
             </div>
         </li>
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">Python Pyromancy</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">C# / C</span>
+                <span class="skill-level">Skill Level: Intermediate</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 60%"></div>
             </div>
         </li>
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">React Miracles</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">Android Studio</span>
+                <span class="skill-level">Skill Level: Beginner</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 40%"></div>
             </div>
         </li>
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">Node.js Hexes</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">Python</span>
+                <span class="skill-level">Skill Level: Intermediate</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 55%"></div>
             </div>
         </li>
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">Database Covenant</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">UI/UX</span>
+                <span class="skill-level">Skill Level: Beginner</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 25%"></div>
             </div>
         </li>
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">AWS Sacred Arts</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">HTML/CSS/JS</span>
+                <span class="skill-level">Skill Level: Intermediate</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 60%"></div>
             </div>
         </li>
         <li class="skill-item">
             <div class="skill-header">
-                <span class="skill-name">Git Version Control Arts</span>
-                <input type="text" class="skill-level" placeholder="Skill Level">
+                <span class="skill-name">Designing</span>
+                <span class="skill-level">Skill Level: Intermediate</span>
             </div>
             <div class="progress-bar">
-                <div class="progress-fill" style="width: 90%"></div>
+                <div class="progress-fill" style="width: 70%"></div>
             </div>
         </li>
     </ul>
-
-    <script>
-        // Auto-save skill levels
-        document.querySelectorAll('.skill-level').forEach(input => {
-            input.addEventListener('change', (e) => {
-                localStorage.setItem(e.target.parentNode.querySelector('.skill-name').textContent, e.target.value);
-            });
-            
-            // Load saved values
-            const skillName = input.parentNode.querySelector('.skill-name').textContent;
-            const savedValue = localStorage.getItem(skillName);
-            if (savedValue) input.value = savedValue;
-        });
-    </script>
 </body>
 </html>
