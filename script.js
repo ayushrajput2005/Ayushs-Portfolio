@@ -1,3 +1,51 @@
+// Initialize audio
+const bgm = document.getElementById('bgm');
+const muteButton = document.getElementById('mute-button');
+const muteIcon = document.getElementById('mute-icon');
+bgm.volume = 0.3;
+
+// Function to play music
+function playMusic() {
+    bgm.play().catch(error => {
+        console.error("Autoplay prevented:", error);
+    });
+}
+
+// Play music on load
+document.addEventListener('DOMContentLoaded', playMusic);
+
+muteButton.addEventListener('click', () => {
+    bgm.muted = !bgm.muted;
+    muteIcon.src = bgm.muted ? 'assets/logo/mute.png' : 'assets/logo/unmute.png';
+    if (!bgm.muted) {
+        bgm.currentTime = 0; // Reset to the beginning
+        bgm.play().catch(console.error);
+    }
+});
+
+let hasInteracted = false;
+
+// Function to start background music
+function startBackgroundMusic() {
+    if (!hasInteracted) {
+        bgm.play()
+            .then(() => {
+                hasInteracted = true;
+                console.log('Music started successfully');
+            })
+            .catch(err => {
+                console.error('Failed to play music:', err);
+                // Retry on next interaction
+                hasInteracted = false;
+            });
+    }
+}
+
+// Add event listeners for user interaction
+['click', 'touchstart', 'keydown'].forEach(event => {
+    document.addEventListener(event, startBackgroundMusic, { once: true });
+});
+
 document.addEventListener('wheel', function(e) {
     if(e.ctrlKey) {
         e.preventDefault();
@@ -229,24 +277,4 @@ window.addEventListener('load', () => {
             console.log('Could not apply styles to iframe content');
         }
     };
-});
-
-const bgm = document.getElementById('bgm');
-const muteButton = document.getElementById('mute-button');
-const muteIcon = document.getElementById('mute-icon');
-
-bgm.volume = 0.5;
-bgm.play().catch(err => console.error('Error playing background music:', err));
-
-muteButton.addEventListener('click', () => {
-    if (bgm.muted) {
-        bgm.muted = false;
-        bgm.currentTime = 0;
-        bgm.play().catch(err => console.error('Error playing background music:', err));
-        muteIcon.src = 'assets/logo/unmute.png';
-    } else {
-        bgm.muted = true;
-        bgm.pause();
-        muteIcon.src = 'assets/logo/mute.png';
-    }
 });
