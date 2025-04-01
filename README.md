@@ -1,4 +1,4 @@
-# Dark Soul Theme Portfolio  
+# Dark Souls Theme Portfolio  
 
 ## Introduction  
 Hello! My name is Ayush, and this is my very first portfolio. I built it using pure **HTML, CSS, and JavaScript**, without any frameworks. It's a simple, static webpage with some visual effects, background music, text, and images.  
@@ -21,8 +21,8 @@ You can check out the portfolio yourself here:
 
 ## Connect with Me  
 If you’d like to check out my work or follow my journey, you can find me on:  
-🔗 **GitHub**: [https://github.com/ayushrajput2005]  
-🔗 **Linkedin**: [https://www.linkedin.com/in/ayush-rajput-98704632b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app]  
+🔗 **[GitHub](https://github.com/ayushrajput2005)**
+🔗 **[Linkedin](https://www.linkedin.com/in/ayush-rajput-98704632b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app)**
 
 ---  
 *"A journey of creation begins with a single line of code."*  
