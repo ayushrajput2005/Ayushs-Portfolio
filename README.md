@@ -17,7 +17,7 @@ This website is a **non-commercial project**, built purely for learning and self
 
 ## Check It Out  
 You can check out the portfolio yourself here:  
-🔗 **[Dark Souls Theme Portfolio](your-portfolio-url.com)**  
+🔗 **[Dark Souls Theme Portfolio](https://ayushrajput2005.github.io/Ayushs-Portfolio/)**  
 
 ## Connect with Me  
 If you’d like to check out my work or follow my journey, you can find me on:  
